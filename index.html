@@ -3,20 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./scripts/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".paragraph > a").click(function() {
+                var ul = $(this).next(),
+                        clone = ul.clone().css({"height":"auto"}).appendTo(".left_menu"),
+                        height = ul.css("height") === "0px" ? ul[0].scrollHeight + "px" : "0px";
+                clone.remove();
+                ul.animate({"height":height});
+                return false;
+            });
+            $('.left_menu > ul > li > a').click(function(){
+                $('.paragraph a').removeClass('active');
+                $(this).addClass('active');
+            }),
+                    $('.paragraph ul li a').click(function(){
+                        $('.paragraph ul li a').removeClass('active');
+                        $(this).addClass('active');
+                    });
+        });
+    </script>
     <title>Ivanova Elena</title>
 </head>
+
 <body id = "index">
 <div id="header">
     <h1>Ivanova Elena</h1>
     <img src="img/logo3.gif" width="180" height="200" border="2" alt="it's i" align="right" title="Ivanova Elena"/>
 </div>
 
-<div id="left_menu">
-    <div><a href="AboutMe.html" target="_blank"><b>Biography</b></a></div>
-    <div><a href="Myfamily.html" target="_blank"><b>My family</b></a></div>
-    <div><a href="Gallery.html" target="_blank"><b>Gallery</b></a></div>
-    <div><a href="FAQ.html" target="_blank"><b>FAQ</b></a></div>
+<div class="left_menu">
+    <ul>
+        <li>
+            <a href="index.html"><b>Home</b></a>
+        </li>
+        <li class="paragraph">
+            <a href="AboutMe.html" target="_blank"><b>Biography</b></a>
+            <ul>
+                <li><a href="AboutMe.html">childhood</a></li>
+                <li><a href="AboutMe.html">learning</a></li>
+                <li><a href="AboutMe.html">working</a></li>
+            </ul>
+        <li class="paragraph">
+            <a href="Myfamily.html" target="_blank"><b>My family</b></a>
+            <ul>
+                <li><a href="Myfamily.html">it's i</a></li>
+                <li><a href="Myfamily.html">my son</a></li>
+                <li><a href="Myfamily.html">my parents</a></li>
+            </ul>
+        <li class="paragraph">
+            <a href="Gallery_js" target="_blank"><b>Gallery</b></a>
+            <ul>
+                <li><a href="Gallery_js.html">photo</a></li>
+                <li><a href="Gallery_js">photo</a></li>
+                <li><a href="Gallery_js">photo</a></li>
+            </ul>
+        <li class="paragraph">
+            <a href="FAQ.html" target="_blank"><b>FAQ</b></a>
+            <ul>
+                <li><a href="FAQ.html">form</a></li>
+                <li><a href="FAQ.html">test</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>
+
+
 <div class="content">
     <p>
         Рада приветствовать на своей первой странице!<br>
@@ -29,8 +82,6 @@
         Надеюсь Вам не было скучно, а если было, прошу простить, спать хочется:) я исправлюсь обязательно:))
     </p>
 </div>
-
-</div>
 <div class="footer">
     Copyright &copy; Elena Ivanova
 </div>
@@ -38,3 +89,5 @@
 </body>
 </html>
 
+<!-- нужно фотки сделать всплыающими, формы с минимальной проверкой и меню - аккордеон!!
+http://devionity.com/ru/courses/js-fundamentals-and-jquery/js-user-interaction-functions-debugging - взаимодействие с пользователем
